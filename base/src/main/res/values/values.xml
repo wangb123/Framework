@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MGJToastStyle"><attr name="android:background"/><attr name="android:textColor"/><attr name="android:textSize"/><attr name="android:icon"/></declare-styleable>
+    <declare-styleable name="MGJToastTheme"><attr format="reference" name="mgjToastStyle"/></declare-styleable>
+    <style name="MGJToastStyleDefault">
+        <item name="android:background">@drawable/toast_bg</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MGJToastThemeDefault"/>
+</resources>

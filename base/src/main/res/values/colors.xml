@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="color_theme">#284179</color>
+    <color name="color_highlight">#ff7142</color>
+    <color name="color_highlight_press">#BA9C92</color>
+
+
+    <color name="line_bg">@color/color_f5</color>
+
+    <color name="gray_bg">@color/color_f5</color>
+
+    <color name="mc_bg">#99000000</color>
+
+    <color name="black">#000</color>
+    <color name="color_111">#111111</color>
+    <color name="color_333">#333333</color>
+    <color name="color_ccc">#cccccc</color>
+    <color name="color_c5c5c5">#c5c5c5</color>
+    <color name="color_666">#666666</color>
+    <color name="color_999">#999999</color>
+    <color name="color_bd">#bdbdbd</color>
+    <color name="color_f5">#f5f5f5</color>
+    <color name="color_E5">#E5E5E5</color>
+    <color name="color_ddd">#dddddd</color>
+    <color name="color_d8">#d8d8d8</color>
+    <color name="color_eee">#eeeeee</color>
+    <color name="color_fc">#fcfcfc</color>
+
+
+</resources>

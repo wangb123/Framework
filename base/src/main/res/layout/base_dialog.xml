@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/dialog_base_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="270dip"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dip">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#333"
+            android:textSize="15dp"
+            android:lineSpacingExtra="3dp"
+            tools:text="萨克的减肥山咖啡吉林省客服蓝山咖啡吉林省客服"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip"
+            android:lineSpacingExtra="3dp"
+            tools:text="message"
+            android:textColor="#666"
+            android:visibility="gone"
+            android:textSize="12dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="270dip"
+        android:layout_height="0.5dp"
+        android:background="#dedede"
+        />
+
+    <LinearLayout
+        android:layout_width="270dip"
+        android:layout_height="45dip"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:background="@drawable/dialog_button1_selector"
+            android:textColor="@color/color_333"
+            android:gravity="center"
+            android:textSize="16dp"
+            tools:text="确定" />
+
+        <View
+            android:layout_width="0.5dip"
+            android:layout_height="match_parent"
+            android:background="#dedede"
+            />
+
+        <TextView
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="fill_parent"
+            android:background="@drawable/dialog_button2_selector"
+            android:textColor="@color/color_highlight"
+            android:textSize="16dp"
+            tools:text="取消"
+            />
+    </LinearLayout>
+</LinearLayout>
