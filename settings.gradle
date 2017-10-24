@@ -1,1 +1,1 @@
-include ':app', ':common_security', ':base'
+include ':app', ':common_security', ':base', ':common'

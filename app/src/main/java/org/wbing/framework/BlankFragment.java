@@ -2,16 +2,20 @@ package org.wbing.framework;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import org.wbing.base.ui.WAdapter;
+import org.wbing.base.view.recyclerview.OnLoadMoreListener;
+import org.wbing.base.view.recyclerview.PageRecyclerView;
+
+import java.util.ArrayList;
 
 
 public class BlankFragment extends Fragment implements IPageListFragment {
@@ -39,33 +43,37 @@ public class BlankFragment extends Fragment implements IPageListFragment {
             pos = getArguments().getInt("pos");
         }
     }
-    RecyclerView recyclerView;
+
+    PageRecyclerView recyclerView;
+
+    WAdapter<String, ViewDataBinding> adapter = new WAdapter.SimpleAdapter<>(0, R.layout.item);
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        recyclerView= view.findViewById(R.id.content);
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new RecyclerView.Adapter<MainActivity.Holder>() {
-
+        recyclerView = view.findViewById(R.id.content);
+        recyclerView.loadMoreFinish(true, true);
+//        recyclerView.setEnableLoadMore(true);
+        recyclerView.showLoadMoreView(true);
+        recyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public MainActivity.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return new MainActivity.Holder(new TextView(parent.getContext()));
-            }
-
-            @Override
-            public void onBindViewHolder(MainActivity.Holder holder, int position) {
-                holder.fill(position);
-                Log.e("tag", position + "");
-            }
-
-            @Override
-            public int getItemCount() {
-                return 100;
+            public void onLoadNMore(View view) {
+//                recyclerView.loadMoreFinish(false, false);
             }
         });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+        adapter.addItems(new ArrayList<String>() {{
+            add("1");
+            add("2");
+            add("3");
+            add("45");
+            add("123");
+            add("123");
+            add("123");
+        }});
 
         return view;
     }

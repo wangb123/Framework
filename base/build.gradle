@@ -22,7 +22,12 @@ android {
     lintOptions {
         abortOnError false
     }
-
+    dataBinding {
+        enabled true
+    }
+    lintOptions {
+        abortOnError false
+    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -47,5 +52,36 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile project(':common_security')
-
+    /**
+     *   用于网络
+     *   retrofit
+     */
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    /**
+     *   用于线程管理
+     *   rxjava、rxandroid
+     */
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    /**
+     *   用于图片fresco
+     */
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.facebook.fresco:imagepipeline-okhttp3:0.12.0'
+    compile 'com.facebook.fresco:animated-gif:0.12.0'
+    compile 'me.relex:photodraweeview:1.1.2'
+    /**
+     *  用于android 6.0 权限管理
+     */
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+    /**
+     * 各种小红点什么的
+     */
+    compile 'cn.bingoogolapple:bga-badgeview:1.1.3@aar'
+    /**
+     * 模块路由
+     */
+    compile 'com.spinytech.ma:macore:0.2.1'
 }

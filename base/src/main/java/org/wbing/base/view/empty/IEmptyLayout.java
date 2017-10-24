@@ -25,10 +25,12 @@ public interface IEmptyLayout {
     /**
      * 显示空view
      */
-    void showEmptyView();
+    void showEmptyView(String errorMessage);
 
     /**
      * 隐藏view
      */
     void hideView();
+
+    View getView();
 }

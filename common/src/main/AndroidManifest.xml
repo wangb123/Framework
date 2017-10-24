@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="org.wbing.base">
+    package="com.yaolan.common">
 
     <application
         android:allowBackup="true"
