@@ -29,28 +29,21 @@ import rx.functions.Action1;
  * Created by 王冰 on 2017/8/16.
  */
 
-public abstract class WActivity<Binding extends ViewDataBinding> extends AppCompatActivity implements Action1<Intent> {
+public abstract class WActivity<Binding extends ViewDataBinding> extends AppCompatActivity implements View.OnClickListener, Action1<Intent>, Handler.Callback {
     /* 存储activity的集合*/
     private static volatile LongSparseArray<WeakReference<WActivity>> activities = new LongSparseArray<>();
-    private volatile boolean exit = false;
-    private final Runnable resetExit = new Runnable() {
-        @Override
-        public void run() {
-            exit = false;
-        }
-    };
+    /**
+     * 退出参数
+     */
+    long mLastClick;
+    static final long BACK_DOUBLE_CLICK_INTERVAL = 2500;
 
     private static Observable<Intent> observable;
 
     private long id;
     private Binding binding;
     public Subscription subscription, actionSubscription;
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            WActivity.this.handleMessage(msg);
-        }
-    };
+    private WeakHandler handler = new WeakHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +81,10 @@ public abstract class WActivity<Binding extends ViewDataBinding> extends AppComp
         setIntent(intent);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
     @Override
     protected void onDestroy() {
@@ -95,16 +92,16 @@ public abstract class WActivity<Binding extends ViewDataBinding> extends AppComp
         resetSubscription();
         activities.remove(id);
         handler.removeCallbacksAndMessages(null);
-        if (!actionSubscription.isUnsubscribed())
+        if (actionSubscription!=null&&!actionSubscription.isUnsubscribed())
             actionSubscription.unsubscribe();
     }
 
     @Override
     public void onBackPressed() {
-        if (activities.size() == 1 && !exit) {
-            exit = true;
+        long currentTime = System.currentTimeMillis();
+        if (activities.size() == 1 && currentTime - mLastClick >= BACK_DOUBLE_CLICK_INTERVAL) {
             ToastUtils.showMessage("再按一次退出程序");
-            handler.postDelayed(resetExit, 2000);
+            mLastClick = currentTime;
         } else {
             super.onBackPressed();
         }
@@ -144,8 +141,10 @@ public abstract class WActivity<Binding extends ViewDataBinding> extends AppComp
 
     }
 
-    protected void handleMessage(Message msg) {
+    @Override
+    public boolean handleMessage(Message msg) {
 
+        return false;
     }
 
     protected Handler getHandler() {
@@ -223,17 +222,5 @@ public abstract class WActivity<Binding extends ViewDataBinding> extends AppComp
     protected static int getActivitySize() {
         return activities.size();
     }
-
-    protected int getStateHeight() {
-        int stateHeight = -1;
-        //获取status_bar_height资源的ID
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            //根据资源ID获取响应的尺寸值
-            stateHeight = getResources().getDimensionPixelSize(resourceId);
-        }
-        return stateHeight;
-    }
-
 
 }

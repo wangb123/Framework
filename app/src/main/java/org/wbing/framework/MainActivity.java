@@ -3,24 +3,20 @@ package org.wbing.framework;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mogujie.security.EncryptUtils;
-import com.mogujie.security.MGSoTool;
+import com.yaolan.common.ui.web.WebActivity;
 
 import org.wbing.base.utils.ApplicationContextGetter;
-import org.wbing.base.utils.EncryptUtil;
-import org.wbing.base.utils.LogUtils;
 import org.wbing.base.utils.ScreenTools;
 import org.wbing.base.view.PagerSlidingTabStrip;
 import org.wbing.base.view.refreshlayout.RefreshLayout;
@@ -35,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        WebActivity.start(this,"https://www.baidu.com/");
+        WebActivity.start(this,"https://www.baidu.com/");
 
         ApplicationContextGetter.instance().setApplicationContext(getApplication());
 

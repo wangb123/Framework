@@ -5,13 +5,17 @@ package com.yaolan.common.config;
  */
 
 public class Router {
+    public class domain {
+        public static final String YLMain = "yao_lan_main";
+    }
+
     public class provider {
         public static final String User = "user";
     }
 
     public class action {
         /**
-         * @com.yaolan.common.config.Router.provider.User
+         * User
          */
         public static final String Login = "user_login";
         public static final String Logout = "user_logout";
